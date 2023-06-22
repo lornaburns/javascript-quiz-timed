@@ -1,4 +1,4 @@
-# Password Generator
+# Timed Javascript Quiz
 
 ## Description:
 
