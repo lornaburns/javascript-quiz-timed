@@ -11,9 +11,9 @@ let submitButton = document.querySelector("#submitButton");
 let ansChoice = "";
 let score = 0;
 let safeTimerDisplay = document.querySelector("#safeTimerDisplay");
+var sec = 60;
 
 function timer(){
-    var sec = 60;
     var timer = setInterval(function(){
         document.getElementById('safeTimerDisplay').innerHTML='00:'+sec;
         sec--;
@@ -77,25 +77,6 @@ function resetColors() {
     answerC.style.color = "#13294B";
      answerD.style.color = "#13294B";
 }
-function question1() {
-    timer();
-    startButton.style.display = "none";
-    quiz.style.display = "block";
-    submitButton.style.display = "block";
-    questionText.innerHTML = questionList[iterationNumber];
-    answerA.innerHTML = answerAList[iterationNumber];
-    answerB.innerHTML = answerBList[iterationNumber];
-    answerC.innerHTML = answerCList[iterationNumber];
-    answerD.innerHTML = answerDList[iterationNumber];
-}
-
-function submitQ1() {
-    if (ansChoice == "c") {
-        score += 1;
-    }
-    iterationNumber += 1;
-}
-
 submitButton.onclick = function() {
     if (iterationNumber === 0) {
         submitQ1();
@@ -119,6 +100,22 @@ submitButton.onclick = function() {
         showScore();}
 };
 
+function question1() {
+    timer();
+    startButton.style.display = "none";
+    quiz.style.display = "block";
+    submitButton.style.display = "block";
+    questionText.innerHTML = questionList[iterationNumber];
+    answerA.innerHTML = answerAList[iterationNumber];
+    answerB.innerHTML = answerBList[iterationNumber];
+    answerC.innerHTML = answerCList[iterationNumber];
+    answerD.innerHTML = answerDList[iterationNumber];
+}
+    function submitQ1() {
+        if (ansChoice == "c") {
+            score += 1;}
+        else {sec -= 5;}
+        iterationNumber += 1;}
 
 
 function question2() {
@@ -130,10 +127,10 @@ function question2() {
 }
     function submitQ2() {
         if (ansChoice == "a") {
-            score += 1;
-        }
-        iterationNumber += 1;
-    }
+            score += 1;}
+        else {sec -= 5;}
+        iterationNumber += 1;}
+    
 
 function question3() {
     questionText.innerHTML = questionList[iterationNumber];
@@ -142,12 +139,12 @@ function question3() {
     answerC.innerHTML = answerCList[iterationNumber];
     answerD.innerHTML = answerDList[iterationNumber];
 }
-function submitQ3() {
-    if (ansChoice == "c") {
-        score += 1;
-    }
-    iterationNumber += 1;
-}
+    function submitQ3() {
+        if (ansChoice == "c") {
+            score += 1;}
+        else {sec -= 5;}
+        iterationNumber += 1;}
+
 
 function question4() {
     questionText.innerHTML = questionList[iterationNumber];
@@ -156,13 +153,11 @@ function question4() {
     answerC.innerHTML = answerCList[iterationNumber];
     answerD.innerHTML = answerDList[iterationNumber];
 }
-function submitQ4() {
-    if (ansChoice == "a") {
-        score += 1;
-    }
-    iterationNumber += 1;
-}
-
+    function submitQ4() {
+        if (ansChoice == "a") {
+            score += 1;}
+        else {sec -= 5;}
+        iterationNumber += 1;}
 
 function question5() {
     questionText.innerHTML = questionList[iterationNumber];
@@ -171,9 +166,9 @@ function question5() {
     answerC.innerHTML = answerCList[iterationNumber];
     answerD.innerHTML = answerDList[iterationNumber];
 }
-function submitQ5() {
-    if (ansChoice == "d") {
-        score += 1;}
+    function submitQ5() {
+        if (ansChoice == "d") {
+            score += 1;}
 }
 
 function showScore() {
@@ -185,5 +180,6 @@ function showScore() {
     answerD.style.display = "none";
     submitButton.style.display = "none";
     startButton.style.display = "none";
+    safeTimerDisplay.style.display = "none";
 }
 
