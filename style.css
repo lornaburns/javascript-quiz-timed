@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+    background-color: #7BAFD4;
+    color: #13294B;
+}
+#startButton {
+    margin: 10px;
+}
+ 
+#submitButton {
+    margin: 10px;
+}
