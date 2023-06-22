@@ -15,7 +15,7 @@ Upload index.html and assets folder (contains script and stylesheet) to browser.
 ## Links:
 
 - [Webpage](https://lornaburns.github.io/password-generator/)
-- [Repository](https://github.com/lornaburns/password-generator)
+- [Repository](https://github.com/lornaburns/javascript-quiz-timed)
 
 ## Use:
 
