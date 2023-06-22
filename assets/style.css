@@ -30,5 +30,8 @@ body {
     margin: 0 auto;
     display: block;
 }
+.answerchoice {
+cursor: pointer;
+}
 
 
