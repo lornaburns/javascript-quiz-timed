@@ -10,6 +10,20 @@ let answerD = document.querySelector("#answerD");
 let submitButton = document.querySelector("#submitButton");
 let ansChoice = "";
 let score = 0;
+let safeTimerDisplay = document.querySelector("#safeTimerDisplay");
+
+function timer(){
+    var sec = 60;
+    var timer = setInterval(function(){
+        document.getElementById('safeTimerDisplay').innerHTML='00:'+sec;
+        sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+            safeTimerDisplay.innerHTML = "Time's up!"
+            showScore();
+        }
+    }, 1000);
+}
 
 
 
@@ -64,6 +78,8 @@ function resetColors() {
      answerD.style.color = "#13294B";
 }
 function question1() {
+    timer();
+    startButton.style.display = "none";
     quiz.style.display = "block";
     submitButton.style.display = "block";
     questionText.innerHTML = questionList[iterationNumber];
@@ -162,6 +178,12 @@ function submitQ5() {
 
 function showScore() {
     console.log("Your score: " + score);
-    // You can display the score in the HTML or perform any other actions here
+    questionText.innerHTML = "Your score is " + score + "/5";
+    answerA.style.display = "none";
+    answerB.style.display = "none";
+    answerC.style.display = "none";
+    answerD.style.display = "none";
+    submitButton.style.display = "none";
+    startButton.style.display = "none";
 }
 

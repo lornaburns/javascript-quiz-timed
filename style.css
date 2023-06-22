@@ -8,5 +8,10 @@ body {
 }
  
 #submitButton {
+    margin: 0 auto;
+    display: block;
+}
+
+#quiz {
     margin: 10px;
 }
