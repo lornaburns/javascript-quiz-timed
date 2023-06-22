@@ -2,6 +2,11 @@
 let startButton = document.querySelector("#startButton");
 let quiz = document.querySelector("#quiz");
 let questionText = document.querySelector("#questionText");
+let initialsScore = document.querySelector("#initialsScore");
+let yourInitials = document.querySelector("#yourInitials")
+let yourScore = document.querySelector("#yourScore");
+let submitScoreBtn = document.querySelector("#submitScoreBtn");
+let scoreList = [];
 let iterationNumber = 0;
 let answerA = document.querySelector("#answerA");
 let answerB = document.querySelector("#answerB");
@@ -13,6 +18,8 @@ let score = 0;
 let safeTimerDisplay = document.querySelector("#safeTimerDisplay");
 var sec = 60;
 
+
+  
 function timer(){
     var timer = setInterval(function(){
         document.getElementById('safeTimerDisplay').innerHTML='00:'+sec;
@@ -24,8 +31,6 @@ function timer(){
         }
     }, 1000);
 }
-
-
 
 let questionList = ["Which of the following is NOT a javascript datatype?",
                     "What symbols are used to call a function?",
@@ -40,8 +45,8 @@ let answerDList = ["number", "C'mere function!", "||...||", "let", "onclick"]
 window.onload = function() {
     quiz.style.display = "none";
     submitButton.style.display = "none";
+    initialsScore.style.display = "none";
   };
-
 
 function aFunction() {
     answerA.style.color = "red";
@@ -181,5 +186,37 @@ function showScore() {
     submitButton.style.display = "none";
     startButton.style.display = "none";
     safeTimerDisplay.style.display = "none";
+    initialsScore.style.display = "block";
+    yourScore.innerHTML = "Score: " + score + "/5";
 }
 
+submitScoreBtn.addEventListener("click", function() {
+    let initials = yourInitials.value.trim();
+  
+    if (initials !== "") {
+      let scoreData = { initials: initials, score: score };
+  
+      let storedScores = JSON.parse(localStorage.getItem("scores")) || [];
+      storedScores.push(scoreData);
+  
+      localStorage.setItem("scores", JSON.stringify(storedScores));
+  
+      displayScores(); 
+      initialsScore.style.display = "none";
+      yourScore.innerHTML = "Score: " + score + "/5";
+    }
+  });
+
+  function displayScores() {
+    let storedScores = JSON.parse(localStorage.getItem("scores")) || [];
+    let scoreListHTML = "<h2>Score List:</h2>";
+  
+    for (let i = 0; i < storedScores.length; i++) {
+      scoreListHTML += "<p>" + storedScores[i].initials + ": " + storedScores[i].score + "/5</p>";
+    }
+  
+    document.getElementById("scoreList").innerHTML = scoreListHTML;
+  }
+  
+
+  
