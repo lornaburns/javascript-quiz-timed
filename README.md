@@ -23,7 +23,7 @@ This webpage is responsive on a range of screen sizes. User can select answers a
 
 ## Image:
 
-<img src="" alt="javascript quiz" width="200"/>
+<img src="https://github.com/lornaburns/javascript-quiz-timed/blob/main/assets/screenshot.png?raw=true" alt="javascript quiz" width="200"/>
 
 ## Credits:
 
