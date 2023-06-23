@@ -3,16 +3,26 @@ body {
     background-color: #7BAFD4;
     color: #13294B;
 }
-
-#startButton {
-    margin: 10px;
+#title {
+    font-size: 40px;
+    text-decoration: underline;
 }
-#submitButton {
+#startButton {
     margin: 0 auto;
     display: block;
+    cursor: pointer;
+    background-color: #13294B;
+    color: white;
+    border-radius: 10px;
+    font-size: 40px;
 }
+
 #quiz {
     margin: 10px;
+}
+#questionText {
+    font-size: 30px;
+    padding: 10px;
 }
 #initialsScore {
     padding: 5px;
@@ -23,15 +33,71 @@ body {
 #yourScore {
     padding: 5px;
 }
-#submitScore {
+#submitScoreBtn {
     padding: 5px;
 }
 #scoreList {
     margin: 0 auto;
     display: block;
+    padding: 2px;
 }
 .answerchoice {
 cursor: pointer;
+display: inline-block;
+background-color:#13294B ;
+padding: 20px;
+width: 200px;
+color: white;
+text-align: center;
+border: 4px double white; 
+border-radius: 10px; 
+font-size: 28px; 
 }
 
+#submitButton {
+    margin: 0 auto;
+    display: block;
+    background-color: white;
+    color: #13294B;
+    width: 100px;
+    padding: 15px;
+    font-size: 14px;
+    border: 4px solid #13294B ;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
+#submityourscore {
+    font-size: 20px;
+    padding: 10px;
+}
+
+#submitScoreBtn {
+    margin: 0 auto;
+    display: block;
+    background-color: #13294B;
+    color: white;
+    width: 150px;
+    padding: 5px;
+    font-size: 16px;
+    border: 4px solid #13294B;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+#yourInitials {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+#safeTimerDisplay {
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+    font-size: 40px;
+    border: #13294B solid 4px;
+    color: #13294B
+    
+}

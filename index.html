@@ -6,24 +6,25 @@
     <link rel="stylesheet" href="assets/style.css"/>
 </head>
 <body>
-    <div><h1>Javascript Quiz</h1></div>
-        <div><button id="startButton" onclick="question1()">Start Quiz</button></div>
-            <div id="safeTimerDisplay"></div>
+    <div><h1 id="title">Javascript Quiz</hi></div>
+        <div><button id="startButton">Start Quiz</button></div>
+            <div><button id="safeTimerDisplay"></div>
             <div id ="quiz">
                 <div id="questionText"></div>
-                    <div id="answerA" class="answerchoice" onclick="aFunction()"></div>
-                    <div id="answerB" class="answerchoice" onclick="bFunction()"></div>
-                    <div id="answerC" class="answerchoice" onclick="cFunction()"></div>
-                    <div id="answerD" class="answerchoice" onclick="dFunction()"></div>
+                    <div><button id="answerA" class="answerchoice"></div>
+                    <div><button id="answerB" class="answerchoice"></div>
+                    <div><button id="answerC" class="answerchoice"></div>
+                    <div><button id="answerD" class="answerchoice"></div>
                 </div>
         <div><button id="submitButton">Submit</button></div> 
         <div id="initialsScore">
-            <div>Submit your score!</div>
+            <div id="submityourscore">Submit your score!</div>
             <input id="yourInitials" placeholder="Initials" size="4">
             <div id="yourScore"></div>
-            <button id="submitScoreBtn">Submit</button>
+            <button id="submitScoreBtn">Submit Score</button>
         </div>
-        <div id="scoreList"></div>
+     <h2 id="scoreList"></h2>
+
  
         <script src="assets/script.js"></script>
 </body>

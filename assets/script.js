@@ -19,7 +19,17 @@ let safeTimerDisplay = document.querySelector("#safeTimerDisplay");
 var sec = 60;
 
 
-  
+window.onload = function() {
+    startButton.style.display = "block";
+    quiz.style.display = "none";
+    submitButton.style.display = "none";
+    submitScoreBtn.style.display = "none";
+    yourInitials.style.display = "none";
+    yourScore.style.display = "none";
+    initialsScore.style.display = "none";
+    safeTimerDisplay.style.display = "none";
+  };  
+
 function timer(){
     var timer = setInterval(function(){
         document.getElementById('safeTimerDisplay').innerHTML='00:'+sec;
@@ -32,55 +42,58 @@ function timer(){
     }, 1000);
 }
 
-let questionList = ["Which of the following is NOT a javascript datatype?",
-                    "What symbols are used to call a function?",
-                    "What is the correct way to comment in javascript?",
-                    "Which of the following is NOT a way to define a variable?",
-                    "Which of the following events occurs when the user clicks on an HTML element?"]
+
+
+let questionList = ["(1/5) Which of the following is NOT a javascript datatype?",
+                    "(2/5) What symbols are used to call a function?",
+                    "(3/5) What is the correct way to comment in javascript?",
+                    "(4/5) Which of the following is NOT a way to define a variable?",
+                    "(5/5) Which of the following events occurs when the user clicks on an HTML element?"]
 let answerAList = ["Boolean", "()", "{#...#}", "obj", "onchange"]
 let answerBList = ["string", "//", "/*...*/", "var", "onmouseover"]
 let answerCList = ["event", "{}", "//...", "const", "onmouseclick"]
 let answerDList = ["number", "C'mere function!", "||...||", "let", "onclick"]
 
-window.onload = function() {
-    quiz.style.display = "none";
-    submitButton.style.display = "none";
-    initialsScore.style.display = "none";
-  };
+
+startButton.onclick = question1;
+answerA.onclick = aFunction;
+answerB.onclick = bFunction;
+answerC.onclick = cFunction;
+answerD.onclick = dFunction; 
 
 function aFunction() {
     answerA.style.color = "red";
-    answerB.style.color = "#13294B";
-    answerC.style.color = "#13294B";
-    answerD.style.color = "#13294B";
+    answerB.style.color = "white";
+    answerC.style.color = "white";
+    answerD.style.color = "white";
     ansChoice = "a";
 }
 function bFunction() {
     answerB.style.color = "red";
-    answerA.style.color = "#13294B";
-    answerC.style.color = "#13294B";
-    answerD.style.color = "#13294B";
+    answerA.style.color = "white";
+    answerC.style.color = "white";
+    answerD.style.color = "white";
     ansChoice = "b";
 }
 function cFunction() {
     answerC.style.color = "red";
-    answerA.style.color = "#13294B";
-    answerB.style.color = "#13294B";
-    answerD.style.color = "#13294B";
+    answerA.style.color = "white";
+    answerB.style.color = "white";
+    answerD.style.color = "white";
     ansChoice = "c";
 }
 function dFunction() {
     answerD.style.color = "red";
-    answerA.style.color = "#13294B";
-    answerB.style.color = "#13294B";
-    answerC.style.color = "#13294B";
+    answerA.style.color = "white";
+    answerB.style.color = "white";
+    answerC.style.color = "white";
     ansChoice = "d";
 }
 function resetColors() {
-    answerA.style.color = "#13294B";
-     answerB.style.color = "#13294B";
-    answerC.style.color = "#13294B";
-     answerD.style.color = "#13294B";
+    answerA.style.color = "white";
+     answerB.style.color = "white";
+    answerC.style.color = "white";
+     answerD.style.color = "white";
 }
 submitButton.onclick = function() {
     if (iterationNumber === 0) {
@@ -107,6 +120,7 @@ submitButton.onclick = function() {
 
 function question1() {
     timer();
+    safeTimerDisplay.style.display = "block";
     startButton.style.display = "none";
     quiz.style.display = "block";
     submitButton.style.display = "block";
@@ -186,37 +200,47 @@ function showScore() {
     submitButton.style.display = "none";
     startButton.style.display = "none";
     safeTimerDisplay.style.display = "none";
+    submitScoreBtn.style.display = "block";
+    yourInitials.style.display = "block";
+    yourScore.style.display = "block";
     initialsScore.style.display = "block";
-    yourScore.innerHTML = "Score: " + score + "/5";
-}
-
-submitScoreBtn.addEventListener("click", function() {
+  }
+  
+  
+  
+  submitScoreBtn.addEventListener("click", function() {
+    storeScoreData();
+  });
+  
+  function storeScoreData() {
+    console.log("Submit score button clicked");
     let initials = yourInitials.value.trim();
   
     if (initials !== "") {
       let scoreData = { initials: initials, score: score };
   
-      let storedScores = JSON.parse(localStorage.getItem("scores")) || [];
-      storedScores.push(scoreData);
+      scoreList = JSON.parse(localStorage.getItem("scores")) || [];
+      scoreList.push(scoreData);
   
-      localStorage.setItem("scores", JSON.stringify(storedScores));
+      localStorage.setItem("scores", JSON.stringify(scoreList));
   
-      displayScores(); 
+      displayScores();
       initialsScore.style.display = "none";
       yourScore.innerHTML = "Score: " + score + "/5";
     }
-  });
-
+  }
+  
   function displayScores() {
-    let storedScores = JSON.parse(localStorage.getItem("scores")) || [];
+    console.log("displayScores() called");
+    yourInitials.style.display = "none";
+    questionText.style.display = "none";
+    yourScore.style.display = "none";
+    scoreList = JSON.parse(localStorage.getItem("scores")) || [];
     let scoreListHTML = "<h2>Score List:</h2>";
   
-    for (let i = 0; i < storedScores.length; i++) {
-      scoreListHTML += "<p>" + storedScores[i].initials + ": " + storedScores[i].score + "/5</p>";
+    for (let i = 0; i < scoreList.length; i++) {
+      scoreListHTML += "<p>" + scoreList[i].initials + ": " + scoreList[i].score + "/5</p>";
     }
   
     document.getElementById("scoreList").innerHTML = scoreListHTML;
   }
-  
-
-  
